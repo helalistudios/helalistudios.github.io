@@ -458,6 +458,23 @@
 .project-visual.json .app-image {
   background-color: #111827;
 }
+    .project-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-actions .project-link {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.link-separator {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1;
+}
   </style>
 </head>
 <body>
@@ -533,16 +550,27 @@
               <span class="tag">Local conversion</span><span class="tag">Filtering</span><span class="tag">Batch</span><span class="tag">CSV · Excel · HTML</span>
             </div>
             <!-- LINK: The Google Play listing is the public product destination. -->
-            <a class="project-link" href="https://play.google.com/store/apps/details?id=com.ibrahimalhelali91.JSON_Converter" target="_blank" rel="noopener noreferrer">Explore the app <span aria-hidden="true">↗</span></a>
-            <a
-  class="project-link"
-  href="https://github.com/myappsongoogleplay/JSON-Converter-Policy/blob/main/privacy-policy.md"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Privacy Policy
-  <span aria-hidden="true">↗</span>
-</a>
+            <div class="project-actions">
+  <a
+    class="project-link"
+    href="https://play.google.com/store/apps/details?id=com.ibrahimalhelali91.JSON_Converter"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Explore the app <span aria-hidden="true">↗</span>
+  </a>
+
+  <span class="link-separator" aria-hidden="true">•</span>
+
+  <a
+    class="project-link"
+    href="https://github.com/myappsongoogleplay/JSON-Converter-Policy/blob/main/privacy-policy.md"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Privacy Policy <span aria-hidden="true">↗</span>
+  </a>
+</div>
           </div>
         </article>
         <article class="project game">
