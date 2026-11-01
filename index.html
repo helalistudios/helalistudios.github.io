@@ -209,7 +209,9 @@
       top: -10%;
       left: 50%;
       transform: translateX(-50%);
-      width: 800px;
+      /* التعديل هنا لمنع خروج الإضاءة عن الشاشة */
+      width: 100%;
+      max-width: 800px; 
       height: 600px;
       background: var(--hero-glow);
       z-index: -1;
@@ -457,19 +459,26 @@
     ========================================= */
     @media (max-width: 900px) {
       .project-card { grid-template-columns: 1fr; }
-      .project-visual { padding: 40px; }
-      .project-info { padding: 40px; }
+      /* تقليل الحواف المبالغ فيها في الشاشات الأصغر */
+      .project-visual { padding: 32px; border-right: none !important; border-bottom: 1px solid var(--border-color); }
+      .project-info { padding: 32px; }
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-cta { flex-direction: column; text-align: center; gap: 32px; padding: 40px; }
+      .footer-cta { flex-direction: column; text-align: center; gap: 32px; padding: 32px; }
     }
 
     @media (max-width: 768px) {
       .nav-links, #desk-btn { display: none; }
       .header-glass { border-radius: 20px; padding: 10px 20px; }
-      .brand img { width: 44px; height: 44px; }
-      .brand-name { font-size: 16px; }
-      .hero h1 { font-size: 44px; }
-      .app-icon { width: 140px; height: 140px; }
+      .brand img { width: 40px; height: 40px; }
+      .brand-name { font-size: 15px; }
+      .hero h1 { font-size: 40px; }
+      
+      /* تصغير الكروت والأيقونات لتبدو أنيقة في الهاتف */
+      .app-icon { width: 120px; height: 120px; border-radius: 28px; }
+      .project-info h3 { font-size: 26px; margin-bottom: 8px; }
+      .project-info p { font-size: 15px; margin-bottom: 24px; }
+      .tags { margin-bottom: 24px; }
+      
       .main-footer { flex-direction: column; gap: 24px; text-align: center; }
     }
   </style>
