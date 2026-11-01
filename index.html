@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HELALI Studios is an independent Android studio making practical tools to help people work with their data.">
+  <meta name="theme-color" content="#f5f3ec">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HELALI Studios — practical tools for your data">
+  <meta property="og:description" content="Independent Android tools, made to help you work with your data.">
+  <title>HELALI Studios — practical tools for your data</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f3ec;
+      --ink: #1e302e;
+      --muted: #586663;
+      --line: #d8ddd4;
+      --green: #285b50;
+      --green-dark: #1e473f;
+      --lime: #d9e9a5;
+      --orange: #d98254;
+      --card: #fffefa;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+    .shell { width: min(1100px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar {
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: .12em;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px 10px 10px 3px;
+      background: var(--green);
+      color: var(--lime);
+    }
+    .brand-mark svg { display: block; }
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+    .hero {
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 64px;
+      padding-block: 84px 96px;
+    }
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 650px;
+      margin-bottom: 22px;
+      font-family: var(--serif);
+      font-size: clamp(52px, 7vw, 84px);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .99;
+    }
+    h1 em { color: var(--green); font-weight: 400; }
+    .hero-copy {
+      max-width: 470px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+    .button {
+      min-height: 50px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+      padding: 0 19px;
+      border: 1px solid var(--green);
+      border-radius: 5px;
+      background: var(--green);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .button:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .button svg { flex: none; }
+    .hero-art {
+      position: relative;
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+    .hero-art::before {
+      position: absolute;
+      z-index: -1;
+      width: min(340px, 100%);
+      aspect-ratio: 1;
+      content: "";
+      border-radius: 50%;
+      background: #e7eadb;
+    }
+    .data-window {
+      width: min(320px, 90%);
+      padding: 20px;
+      border: 1px solid #d6dcd0;
+      border-radius: 10px;
+      background: var(--card);
+      box-shadow: 0 20px 48px rgb(33 58 49 / 11%);
+      transform: rotate(-3deg);
+    }
+    .window-head { display: flex; align-items: center; gap: 6px; padding-bottom: 15px; border-bottom: 1px solid #e5e8df; }
+    .window-dot { width: 7px; height: 7px; border-radius: 50%; background: #b8c0b3; }
+    .window-label { margin-left: auto; color: #69766c; font-size: 10px; letter-spacing: .1em; }
+    .code { padding-top: 15px; color: #52645a; font: 12px/1.9 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .code .key { color: #955a40; }
+    .code .value { color: var(--green); }
+    .code .indent { padding-left: 17px; }
+    .format-stamp {
+      position: absolute;
+      right: -8px;
+      bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      border: 1px solid #c9d7a2;
+      border-radius: 4px;
+      background: var(--lime);
+      color: #334432;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .08em;
+      transform: rotate(4deg);
+    }
+    .format-stamp svg { width: 17px; height: 17px; }
+    .product-section {
+      padding-block: 72px 76px;
+      border-top: 1px solid var(--line);
+    }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .section-heading h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 46px);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+    }
+    .section-heading p { max-width: 330px; margin: 0; color: var(--muted); font-size: 14px; }
+    .product-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 32px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+    }
+    .product-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .app-icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      flex: none;
+      border-radius: 12px;
+      background: #e8efda;
+      color: var(--green);
+    }
+    .app-icon svg { width: 24px; height: 24px; }
+    .product-title h3 { margin: 0; font-size: 19px; font-weight: 730; letter-spacing: -.02em; }
+    .product-title h3 span { color: var(--muted); font-weight: 500; }
+    .product-description { max-width: 650px; margin: 0 0 17px; color: var(--muted); font-size: 15px; }
+    .capabilities { display: flex; flex-wrap: wrap; gap: 8px; }
+    .capability {
+      padding: 5px 10px;
+      border-radius: 3px;
+      background: #eff1e9;
+      color: #41534a;
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .product-action { white-space: nowrap; }
+    .about {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 80px;
+      padding-block: 70px 74px;
+      border-top: 1px solid var(--line);
+    }
+    .about h2 {
+      max-width: 300px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+    }
+    .about-copy { max-width: 600px; color: var(--muted); }
+    .about-copy p { margin-bottom: 17px; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-block: 22px 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 22px; }
+    .footer a { color: var(--green-dark); text-underline-offset: 3px; }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 36px, 520px); }
+      .topbar { height: 72px; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 28px; padding-block: 62px 56px; }
+      h1 { max-width: 540px; font-size: clamp(52px, 13vw, 72px); }
+      .hero-copy { font-size: 16px; }
+      .hero-art { min-height: 280px; }
+      .hero-art::before { width: 265px; }
+      .data-window { width: min(300px, 86%); }
+      .format-stamp { right: 0; bottom: 12px; }
+      .product-section { padding-block: 52px 56px; }
+      .section-heading { display: block; }
+      .section-heading h2 { margin-bottom: 12px; }
+      .product-card { grid-template-columns: 1fr; gap: 22px; padding: 22px; }
+      .product-action { justify-self: start; }
+      .about { grid-template-columns: 1fr; gap: 22px; padding-block: 52px 56px; }
+      .about h2 { max-width: 400px; }
+      .footer { align-items: flex-start; flex-direction: column; gap: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#home" aria-label="HELALI Studios home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 4.5v11M4 10h8M12 4.5v11M12 10h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span>HELALI STUDIOS</span>
+    </a>
+    <a class="top-link" href="https://play.google.com/store/apps/developer?id=HELALI+Studios" target="_blank" rel="noopener noreferrer">
+      Visit on Google Play
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </header>
+
+  <main id="home">
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Independent Android studio</p>
+        <h1 id="hero-title">Useful tools.<br><em>Your data,</em> your way.</h1>
+        <p class="hero-copy">HELALI Studios makes practical Android tools for working with data—straightforward to use, and built around the things you need to get done.</p>
+        <a class="button" href="https://play.google.com/store/apps/developer?id=HELALI+Studios" target="_blank" rel="noopener noreferrer">
+          Explore on Google Play
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="data-window">
+          <div class="window-head"><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i><span class="window-label">DATA, MADE USEFUL</span></div>
+          <div class="code">
+            <div>{</div>
+            <div class="indent"><span class="key">"format"</span>: <span class="value">"flexible"</span>,</div>
+            <div class="indent"><span class="key">"workflow"</span>: <span class="value">"yours"</span>,</div>
+            <div class="indent"><span class="key">"busywork"</span>: <span class="value">"less"</span></div>
+            <div>}</div>
+          </div>
+        </div>
+        <div class="format-stamp">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 3.5h8l4 4V16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3.5Z" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.5V8h4M7 11h6M7 14h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          JSON → YOUR FORMAT
+        </div>
+      </div>
+    </section>
+
+    <section class="shell product-section" id="tools" aria-labelledby="tools-title">
+      <div class="section-heading">
+        <h2 id="tools-title">A tool for the task at hand.</h2>
+        <p>One practical app to move JSON into the formats you need.</p>
+      </div>
+      <article class="product-card">
+        <div>
+          <div class="product-title">
+            <span class="app-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7.5 4.5h9A2.5 2.5 0 0 1 19 7v10a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 17V7a2.5 2.5 0 0 1 2.5-2.5Z" stroke="currentColor" stroke-width="1.7"/><path d="m9 9-2 3 2 3m6-6 2 3-2 3m-2-7-2 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>JSON Converter <span>— All in One</span></h3>
+          </div>
+          <p class="product-description">Convert JSON locally, filter what you need, and handle batch conversions. Export to CSV, Excel, or HTML.</p>
+          <div class="capabilities" aria-label="Features">
+            <span class="capability">Local conversion</span>
+            <span class="capability">Filtering</span>
+            <span class="capability">Batch conversion</span>
+            <span class="capability">CSV · Excel · HTML</span>
+          </div>
+        </div>
+        <a class="button product-action" href="https://play.google.com/store/apps/details?id=com.ibrahimalhelali91.JSON_Converter" target="_blank" rel="noopener noreferrer">
+          View on Google Play
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+    </section>
+
+    <section class="shell about" aria-labelledby="about-title">
+      <h2 id="about-title">Small studio.<br>Practical by design.</h2>
+      <div class="about-copy">
+        <p>HELALI Studios is an independent Android studio focused on tools that help people work with their data. The aim is simple: make useful tasks feel a little more straightforward.</p>
+        <p>Have a question about JSON Converter? Get in touch at <a href="mailto:ibrahimalhelali91@gmail.com">ibrahimalhelali91@gmail.com</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>© HELALI Studios</span>
+    <nav class="footer-links" aria-label="Studio links">
+      <a href="https://play.google.com/store/apps/developer?id=HELALI+Studios" target="_blank" rel="noopener noreferrer">Google Play</a>
+      <a href="https://github.com/myappsongoogleplay/JSON-Converter-Policy/blob/main/privacy-policy.md" target="_blank" rel="noopener noreferrer">JSON Converter privacy policy</a>
+      <a href="mailto:ibrahimalhelali91@gmail.com">Contact</a>
+    </nav>
+  </footer>
+</body>
+</html>
