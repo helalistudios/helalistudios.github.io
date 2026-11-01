@@ -182,27 +182,16 @@
     .theme-toggle svg { width: 22px; height: 22px; fill: currentColor; }
     
     /* Hide sun icon in light mode, hide moon in dark mode */
-    .icon-sun { display: none; }
-    [data-theme="dark"] .icon-sun { display: block; }
-    [data-theme="dark"] .icon-moon { display: none; }
+    /* إعدادات أيقونات زر التبديل الجديدة */
+.theme-toggle svg { width: 22px; height: 22px; }
+.icon-sun { display: none; }
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #ffffff !important;
-      padding: 12px 24px;
-      border-radius: 99px;
-      font-weight: 600;
-      font-size: 15px;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px -10px var(--primary);
-    }
+/* إعدادات تبديل شعار الاستوديو (اللوجو) */
+.logo-dark { display: none; } /* إخفاء الشعار الأبيض في الوضع النهاري */
+[data-theme="dark"] .logo-light { display: none; } /* إخفاء الشعار الأسود في الوضع الليلي */
+[data-theme="dark"] .logo-dark { display: block; } /* إظهار الشعار الأبيض في الوضع الليلي */
 
     /* =========================================
        Hero Section
@@ -491,9 +480,11 @@
   <div class="header-wrapper">
     <header class="header-glass">
       <a href="#home" class="brand">
-        <img src="assets/studio-logo.png" alt="Helali Studios Logo">
-        <span class="brand-name">HELALI STUDIOS</span>
-      </a>
+  <!-- أضفنا كلاس logo-light و logo-dark -->
+  <img src="assets/studio-logo.png" alt="Helali Studios Logo" class="logo-light">
+  <img src="assets/studio-logo-white.png" alt="Helali Studios Logo" class="logo-dark">
+  <span class="brand-name">HELALI STUDIOS</span>
+</a>
       
       <nav class="nav-links">
         <a href="#work">Selected Work</a>
@@ -503,11 +494,24 @@
       <div class="header-actions">
         <!-- Dynamic Theme Toggle -->
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
-          <!-- Moon Icon (Shown in Light Mode) -->
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.1,22c-5.5,0-10-4.5-10-10c0-4.7,3.3-8.8,7.9-9.8c0.4-0.1,0.8,0.2,0.9,0.5c0.1,0.4-0.1,0.8-0.5,0.9 c-3.8,1-6.5,4.4-6.5,8.3c0,4.7,3.8,8.5,8.5,8.5c3.9,0,7.3-2.6,8.3-6.5c0.1-0.4,0.5-0.6,0.9-0.5c0.4,0.1,0.6,0.5,0.5,0.9 C20.9,18.7,16.8,22,12.1,22z"/></svg>
-          <!-- Sun Icon (Shown in Dark Mode) -->
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,17c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S14.8,17,12,17z M12,8.5c-1.9,0-3.5,1.6-3.5,3.5s1.6,3.5,3.5,3.5s3.5-1.6,3.5-3.5 S13.9,8.5,12,8.5z M12,5.5c-0.4,0-0.8-0.3-0.8-0.8V2.8c0-0.4,0.3-0.8,0.8-0.8s0.8,0.3,0.8,0.8v1.9C12.8,5.1,12.4,5.5,12,5.5z M12,22 c-0.4,0-0.8-0.3-0.8-0.8v-1.9c0-0.4,0.3-0.8,0.8-0.8s0.8,0.3,0.8,0.8v1.9C12.8,21.7,12.4,22,12,22z M18.4,7.1c-0.2,0-0.4-0.1-0.5-0.2 l-1.3-1.3c-0.3-0.3-0.3-0.8,0-1.1s0.8-0.3,1.1,0l1.3,1.3c0.3,0.3,0.3,0.8,0,1.1C18.8,7,18.6,7.1,18.4,7.1z M6.9,18.6 c-0.2,0-0.4-0.1-0.5-0.2l-1.3-1.3c-0.3-0.3-0.3-0.8,0-1.1s0.8-0.3,1.1,0l1.3,1.3c0.3,0.3,0.3,0.8,0,1.1C7.3,18.5,7.1,18.6,6.9,18.6z M5.5,12c0-0.4-0.3-0.8-0.8-0.8H2.8c-0.4,0-0.8,0.3-0.8,0.8s0.3,0.8,0.8,0.8h1.9C5.1,12.8,5.5,12.4,5.5,12z M21.2,12 h-1.9c-0.4,0-0.8-0.3-0.8-0.8s0.3-0.8,0.8-0.8h1.9c0.4,0,0.8,0.3,0.8,0.8S21.7,12,21.2,12z M5.6,7.1c-0.2,0-0.4-0.1-0.5-0.2 c-0.3-0.3-0.3-0.8,0-1.1l1.3-1.3c0.3-0.3,0.8-0.3,1.1,0s0.3,0.8,0,1.1L6.2,6.9C6,7,5.8,7.1,5.6,7.1z M17.1,18.6 c-0.2,0-0.4-0.1-0.5-0.2c-0.3-0.3-0.3-0.8,0-1.1l1.3-1.3c0.3-0.3,0.8-0.3,1.1,0s0.3,0.8,0,1.1l-1.3,1.3 C17.5,18.5,17.3,18.6,17.1,18.6z"/></svg>
-        </button>
+  <!-- أيقونة القمر (تظهر في النهاري) -->
+  <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+  
+  <!-- أيقونة الشمس (تظهر في الليلي) -->
+  <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+</button>
         <a href="mailto:ibrahimalhelali91@gmail.com" class="btn-primary" id="desk-btn">Let's Talk</a>
       </div>
     </header>
@@ -614,9 +618,10 @@
   <!-- Footer -->
   <footer class="container main-footer">
     <div class="brand footer-brand" style="gap: 12px;">
-      <img src="assets/studio-logo.png" alt="">
-      <span class="brand-name" style="font-size: 14px;">HELALI STUDIOS © 2026</span>
-    </div>
+  <img src="assets/studio-logo.png" alt="Helali Studios" class="logo-light">
+  <img src="assets/studio-logo-white.png" alt="Helali Studios" class="logo-dark">
+  <span class="brand-name" style="font-size: 14px;">HELALI STUDIOS © 2026</span>
+</div>
     <div class="footer-links">
       <a href="https://play.google.com/store/apps/developer?id=HELALI+Studios" target="_blank" rel="noopener">Google Play Developer Page</a>
     </div>
