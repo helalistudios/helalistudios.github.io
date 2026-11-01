@@ -198,10 +198,16 @@
     ========================================= */
     .contents {
       position: sticky;
-      top: 140px; /* Stays fixed below the header */
+      top: 100px;
+      align-self: start; /* ضروري لكي يثبت الفهرس عند التمرير */
       padding-left: 24px;
       border-left: 2px solid var(--border-color);
+      max-height: calc(100vh - 120px); /* يمنعه من الاختفاء أسفل الشاشة */
+      overflow-y: auto; /* يضيف سكرول داخلي للفهرس إذا كان طويلاً جداً */
     }
+    /* إخفاء شريط التمرير الجانبي للفهرس لجمالية التصميم */
+    .contents::-webkit-scrollbar { width: 4px; }
+    .contents::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
     .contents-label {
       font-family: var(--font-mono);
       font-size: 12px;
@@ -244,16 +250,30 @@
        Mobile Responsiveness
     ========================================= */
     @media (max-width: 900px) {
-      .page-grid { grid-template-columns: 1fr; }
-      .contents { position: static; border-left: none; border-top: 2px solid var(--border-color); padding-top: 24px; padding-left: 0; margin-bottom: 40px; order: -1; }
+      /* تحويل الشبكة إلى Flex لكي نتمكن من رفع الفهرس للأعلى */
+      .page-grid { display: flex; flex-direction: column; }
+      .contents { 
+        position: static; 
+        order: -1; /* هذا السطر السحري يرفع الفهرس فوق النص بالكامل */
+        width: 100%; 
+        border-left: none; 
+        border-top: 2px solid var(--border-color); 
+        padding-top: 24px; 
+        padding-left: 0; 
+        margin-bottom: 24px; 
+      }
     }
     @media (max-width: 768px) {
-      .header-glass { padding: 10px 20px; }
-      .brand-name { display: none; }
+      .header-glass { padding: 10px 16px; }
+      
+      /* تصغير حجم اللوجو واسم الاستوديو بدلاً من حذفه ليتسع في شاشة الهاتف */
+      .brand img { width: 34px; height: 34px; border-radius: 8px;}
+      .brand-name { display: block !important; font-size: 13px; letter-spacing: 0.02em; }
+      
       #desk-btn { display: none; }
-      .shell { padding-top: 120px; }
-      .document { padding: 32px 24px; border-radius: 20px; }
-      .document-content h1 { font-size: 32px; }
+      .shell { padding-top: 110px; padding-inline: 16px; }
+      .document { padding: 32px 20px; border-radius: 24px; }
+      .document-content h1 { font-size: 28px; }
       .main-footer { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
@@ -287,6 +307,7 @@
       <article class="document" aria-label="Privacy policy">
         <div class="document-content">
           <!-- POLICY_CONTENT_START (UNTOUCHED) -->
+          <img src="../assets/drop-2048.png" width="64" height="64" style="border-radius: 16px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" alt="Drop 2048 Icon">
 <h1 id="privacy-policy-for-drop-2048">Privacy Policy for Drop 2048</h1>
 <p><strong>Last updated: Oktober 4, 2026</strong></p>
 <p>Drop 2048 ("the Game", "we", "us", or "our") is a mobile game published by
