@@ -390,7 +390,8 @@
        About Section
     ========================================= */
     .about-section {
-      padding: 120px 0;
+      /* تم تغيير الصفر إلى 24px لإعادة الحواف الجانبية */
+      padding: 120px 24px; 
       margin-top: 60px;
       border-top: 1px solid var(--border-color);
     }
@@ -464,6 +465,7 @@
       .project-info { padding: 32px; }
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-cta { flex-direction: column; text-align: center; gap: 32px; padding: 32px; }
+      .about-section { padding: 60px 16px; }
     }
 
     @media (max-width: 768px) {
@@ -472,6 +474,7 @@
       .brand img { width: 40px; height: 40px; }
       .brand-name { font-size: 15px; }
       .hero h1 { font-size: 40px; }
+      .about-section { padding: 60px 16px; }
       
       /* تصغير الكروت والأيقونات لتبدو أنيقة في الهاتف */
       .app-icon { width: 120px; height: 120px; border-radius: 28px; }
