@@ -454,13 +454,9 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
-    /* خلفية شعار الاستوديو في أعلى الصفحة وأسفلها */
-.brand img,
-.footer-brand img {
+    /* خلفية أيقونة JSON Converter فقط */
+.project-visual.json .app-image {
   background-color: #111827;
-  padding: 4px;
-  border-radius: 8px;
-  object-fit: contain;
 }
   </style>
 </head>
@@ -538,6 +534,15 @@
             </div>
             <!-- LINK: The Google Play listing is the public product destination. -->
             <a class="project-link" href="https://play.google.com/store/apps/details?id=com.ibrahimalhelali91.JSON_Converter" target="_blank" rel="noopener noreferrer">Explore the app <span aria-hidden="true">↗</span></a>
+            <a
+  class="project-link"
+  href="https://github.com/myappsongoogleplay/JSON-Converter-Policy/blob/main/privacy-policy.md"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Privacy Policy
+  <span aria-hidden="true">↗</span>
+</a>
           </div>
         </article>
         <article class="project game">
@@ -574,8 +579,6 @@
   <footer class="shell footer">
     <span class="footer-brand"><img src="assets/studio-logo.png" width="512" height="512" alt=""> HELALI STUDIOS</span>
     <nav class="footer-links" aria-label="Studio links">
-      <!-- LINK: Privacy policy applies to JSON Converter only, not the studio or Drop 2048. -->
-      <a href="https://github.com/myappsongoogleplay/JSON-Converter-Policy/blob/main/privacy-policy.md" target="_blank" rel="noopener noreferrer">JSON Converter privacy policy</a>
       <a href="https://play.google.com/store/apps/developer?id=HELALI+Studios" target="_blank" rel="noopener noreferrer">Google Play</a>
       <a href="mailto:ibrahimalhelali91@gmail.com">Contact</a>
     </nav>
