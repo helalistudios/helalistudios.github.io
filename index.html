@@ -4,676 +4,578 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="HELALI Studios makes useful mobile tools and thoughtful games for the everyday.">
-  <meta name="theme-color" content="#f8f9f5">
+  <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website">
   <meta property="og:title" content="HELALI Studios — useful things, joyful play">
   <meta property="og:description" content="Independent maker of mobile tools and games.">
   <link rel="icon" type="image/png" href="assets/studio-logo-white.png">
-  <title>HELALI Studios — useful things, joyful play</title>
+  <title>HELALI Studios — premium mobile tools & games</title>
   
-  <!-- Added Premium Font -->
+  <!-- Premium Fonts: Outfit for headings, Inter for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      color-scheme: light;
-      --paper: #f8f9f5; /* Slightly cleaner background */
-      --ink: #112028; /* Deeper, richer dark */
-      --muted: #5e7375;
-      --line: #dbe4e0;
-      --teal: #125e5a;
-      --teal-deep: #0c423f;
-      --acid: #dcfc58;
-      --coral: #ff7656;
-      --card: #ffffff;
-      /* Using the new premium fonts */
-      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      /* Premium Color Palette */
+      --bg-color: #ffffff;
+      --surface-color: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
       
-      /* Premium Shadows */
-      --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-      --shadow-md: 0 12px 24px -6px rgb(18 94 90 / 0.08), 0 4px 12px -4px rgb(18 94 90 / 0.08);
-      --shadow-lg: 0 24px 48px -12px rgb(18 94 90 / 0.15), 0 12px 24px -8px rgb(18 94 90 / 0.1);
+      --primary: #0f766e; /* Elegant Teal */
+      --primary-hover: #115e59;
+      --accent: #f97316; /* Coral/Orange accent */
+      --accent-light: #ffedd5;
+      
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Refined Shadows */
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.04), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+      --shadow-hover: 0 25px 50px -12px rgb(15 118 110 / 0.15);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+    
     body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font);
-      font-size: 18px; /* Increased from 16px */
-      line-height: 1.6;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* Subtle noise texture */
-    body::before {
-      position: fixed;
-      z-index: 5;
-      inset: 0;
-      pointer-events: none;
-      content: "";
-      opacity: .08;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
-    }
-
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
     a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--coral);
+      outline: 2px solid var(--primary);
       outline-offset: 4px;
       border-radius: 4px;
     }
 
-    .shell { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
-    
-    /* Header */
-    .topbar {
-      position: relative;
-      z-index: 10;
-      min-height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--line);
-    }
-    .brand { display: inline-flex; align-items: center; gap: 16px; text-decoration: none; }
-    .brand img { width: 56px; height: 56px; object-fit: contain; border-radius: 12px;} /* Increased size */
-    .brand-name { font-size: 16px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase;}
-    .header-right { display: flex; align-items: center; gap: 40px; }
-    .nav { display: flex; align-items: center; gap: 36px; }
-    .nav a, .header-contact {
-      color: var(--ink);
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-    .nav a:hover, .header-contact:hover { color: var(--teal); }
-    .header-contact {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 24px;
-      background: var(--ink);
-      color: #fff !important;
-      border-radius: 8px;
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    }
-    .header-contact:hover {
-        background: var(--teal);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-sm);
-    }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
-    .menu-toggle {
-      display: none;
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: transparent;
-      color: var(--ink);
-      cursor: pointer;
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 700px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 60px;
-      padding-block: 100px;
-    }
-    .kicker {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 0 30px;
-      color: var(--teal);
-      font: 700 14px/1.4 var(--mono);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    .kicker::before { width: 30px; height: 2px; background: var(--coral); content: ""; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      max-width: 700px;
-      margin-bottom: 24px;
-      font-size: clamp(60px, 8vw, 110px); /* Bigger, more impactful */
-      font-weight: 800;
-      letter-spacing: -.04em;
-      line-height: 1;
-    }
-    h1 .accent { color: var(--teal); }
-    h1 .play { position: relative; display: inline-block; }
-    h1 .play::after {
-      position: absolute;
-      right: 0;
-      bottom: 2px;
+    /* =========================================
+       Floating Glass Header
+    ========================================= */
+    .header-wrapper {
+      position: fixed;
+      top: 24px;
       left: 0;
-      height: 16px;
-      background: var(--acid);
-      content: "";
-      transform: rotate(-1deg);
-      z-index: -1;
-      border-radius: 4px;
-    }
-    .hero-copy {
-      max-width: 520px;
-      margin-bottom: 40px;
-      color: var(--muted);
-      font-size: 20px; /* Highly readable */
-      line-height: 1.7;
-    }
-    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; }
-    .button {
-      min-height: 56px;
-      display: inline-flex;
-      align-items: center;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
       justify-content: center;
-      gap: 14px;
-      padding: 0 32px;
-      border-radius: 12px;
-      background: var(--teal);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all .2s ease;
-      box-shadow: var(--shadow-sm);
+      padding: 0 24px;
     }
-    .button:hover { 
-        background: var(--teal-deep); 
-        transform: translateY(-3px); 
-        box-shadow: var(--shadow-md);
-    }
-
-    /* Hero Art */
-    .hero-art {
-      position: relative;
-      min-height: 500px;
-      display: grid;
-      place-items: center;
-      isolation: isolate;
-    }
-    .hero-art::before {
-      position: absolute;
-      z-index: -2;
-      width: min(480px, 95%);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: var(--acid);
-      content: "";
-    }
-    .art-ring {
-      position: absolute;
-      z-index: -1;
-      width: min(560px, 110%);
-      aspect-ratio: 1;
-      border: 2px solid rgb(18 94 90 / 15%);
-      border-radius: 50%;
-      transform: rotate(-23deg) scaleY(.56);
-    }
-    .hero-tiles {
-      width: min(440px, 90%);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      transform: rotate(-4deg);
-    }
-    .hero-tile {
-      min-height: 180px;
+    
+    .header-glass {
+      width: 100%;
+      max-width: 1092px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
-      padding: 24px;
-      border-radius: 20px;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.3s ease;
-    }
-    .hero-tile:hover { transform: translateY(-10px) rotate(2deg); }
-    .hero-tile.tool { background: var(--teal); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
-    .hero-tile.game { margin-top: 40px; background: var(--coral); color: #fff; }
-    
-    .tile-index { font: 700 12px var(--mono); letter-spacing: .12em; opacity: .8; }
-    .tile-name { margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
-    .tile-caption { margin: 8px 0 0; font-size: 14px; font-weight: 500; opacity: 0.9; }
-    .tile-glyph { align-self: flex-end; width: 48px; height: 48px; }
-    
-    .art-note {
-      position: absolute;
-      right: 0;
-      bottom: 20px;
-      padding: 12px 20px;
-      border-radius: 8px;
-      background: var(--card);
-      box-shadow: var(--shadow-sm);
-      font: 700 12px var(--mono);
-      letter-spacing: .1em;
-      transform: rotate(5deg);
-      border: 1px solid var(--line);
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 99px; /* Pill shape */
+      box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.05);
     }
 
-    /* Divider */
-    .studio-line {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      padding-block: 30px;
-      color: var(--muted);
-      font: 700 14px var(--mono);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    .studio-line strong { color: var(--ink); font-size: 16px; }
-    .studio-line .rule { height: 1px; flex: 1; background: var(--line); }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 36px; height: 36px; border-radius: 10px; }
+    .brand-name { font-family: var(--font-heading); font-weight: 700; font-size: 16px; letter-spacing: 0.05em; }
 
-    /* Work Section */
-    .work { padding-block: 100px; }
-    .section-top {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      align-items: end;
-      gap: 40px;
-      margin-bottom: 60px;
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
     }
-    .section-index { margin-bottom: 16px; color: var(--teal); font: 700 14px var(--mono); letter-spacing: .14em; }
-    .section-top h2, .about-title {
-      margin: 0;
-      font-size: clamp(40px, 5vw, 64px);
-      font-weight: 800;
-      letter-spacing: -.04em;
-      line-height: 1.1;
-    }
-    .section-top > p { max-width: 280px; margin: 0 0 8px; color: var(--muted); font-size: 16px; line-height: 1.6;}
-    
-    .project-list { display: grid; gap: 40px; }
-    .project {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 400px;
-      overflow: hidden;
-      border-radius: 24px;
-      background: var(--card);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--line);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-    .project:hover {
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-4px);
-    }
-    
-    .project-visual {
-      position: relative;
-      min-height: 350px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-    .project-visual.json { background: #e2eef5; }
-    .project-visual.game { background: #fbe6e1; }
-    .project-visual::before {
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 50%;
-      content: "";
-    }
-    .project-visual::after {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
-      content: "";
-    }
-    
-    .app-image {
-      position: relative;
-      z-index: 1;
-      width: 180px; /* Much larger and clearer */
-      height: 180px;
-      border-radius: 36px;
-      box-shadow: 0 24px 48px rgb(0 0 0 / 15%);
-      transform: rotate(-5deg);
-      transition: transform 0.4s ease;
-    }
-    .project:hover .app-image { transform: rotate(0deg) scale(1.05); }
-    .project.game .app-image { transform: rotate(5deg); }
-    .project.game:hover .app-image { transform: rotate(0deg) scale(1.05); }
-    
-    .project-visual.json .app-image { background-color: #111827; border: 4px solid #111827;}
+    .nav-links a:hover { color: var(--text-main); }
 
-    .visual-tag {
-      position: absolute;
-      z-index: 2;
-      right: 30px;
-      bottom: 30px;
-      background: rgba(255,255,255,0.9);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font: 700 12px var(--mono);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--ink);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .project-copy { display: flex; flex-direction: column; justify-content: center; padding: 60px; }
-    .project-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      color: var(--teal);
-      font: 700 12px var(--mono);
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-    .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #36816b; box-shadow: 0 0 0 4px rgba(54, 129, 107, 0.2);}
-    .status-dot.pending { background: #c6573f; box-shadow: 0 0 0 4px rgba(198, 87, 63, 0.2);}
-    
-    .project h3 { margin-bottom: 16px; font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
-    .project h3 span { color: var(--muted); font-weight: 500; }
-    .project-copy > p { max-width: 500px; margin-bottom: 30px; color: var(--muted); font-size: 18px; line-height: 1.6;}
-    
-    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
-    .tag { padding: 8px 16px; border-radius: 8px; background: #f0f4f2; color: var(--teal-deep); font: 600 13px var(--mono); }
-    
-    .project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .project-link {
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--teal);
-      font-size: 16px;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px var(--primary);
+    }
+
+    /* =========================================
+       Hero Section (Spacious & Clean)
+    ========================================= */
+    .hero {
+      padding-top: 180px;
+      padding-bottom: 100px;
+      text-align: center;
+      position: relative;
+    }
+    
+    /* Subtle background glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(15,118,110,0.04) 0%, rgba(255,255,255,0) 70%);
+      z-index: -1;
+    }
+
+    .kicker {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding: 6px 16px;
+      background: rgba(15, 118, 110, 0.05);
+      border-radius: 99px;
+    }
+
+    /* Fixed Typography - No more crowding! */
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 8vw, 88px);
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.15; /* Breathable spacing */
+      letter-spacing: -0.02em; /* Adjusted letter spacing */
+      margin-bottom: 24px;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+    
+    .hero h1 span.accent {
+      color: var(--primary);
+    }
+    .hero h1 span.highlight {
+      position: relative;
+      display: inline-block;
+    }
+    .hero h1 span.highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background: #d9f99d; /* Acid green accent */
+      z-index: -1;
+      border-radius: 4px;
+    }
+
+    .hero p.subtitle {
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       Work Section (Bento Grid)
+    ========================================= */
+    .section-header {
+      margin-bottom: 60px;
+    }
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 48px);
       font-weight: 700;
-      text-decoration: none;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 18px;
+      margin-top: 12px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    /* Clean Card Design */
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(15, 118, 110, 0.2);
+    }
+
+    .project-visual {
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+      position: relative;
+    }
+    .project-card.game .project-visual { background: var(--accent-light); }
+    
+    .app-icon {
+      width: 180px;
+      height: 180px;
+      border-radius: 40px;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease;
+    }
+    .project-card:hover .app-icon {
+      transform: scale(1.05) translateY(-5px);
+    }
+
+    .project-info {
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    .status-badge.pending { color: var(--accent); }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: currentColor;
+    }
+
+    .project-info h3 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .project-info h3 span { color: var(--text-muted); font-weight: 500;}
+    
+    .project-info p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-size: 17px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .tag {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: auto;
+    }
+    .link-primary {
+      color: var(--primary);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       border-bottom: 2px solid transparent;
       padding-bottom: 2px;
       transition: all 0.2s;
     }
-    .project-link:hover { border-bottom-color: var(--teal); gap: 12px;}
-    .link-separator { color: var(--line); font-size: 16px; }
+    .link-primary:hover { border-bottom-color: var(--primary); gap: 10px; }
     
-    .development-note { color: var(--coral); font-size: 16px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;}
-
-    /* About Section */
-    .about {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 10%;
-      padding-block: 100px;
-      border-top: 1px solid var(--line);
-    }
-    .about-copy { color: var(--muted); font-size: 20px; line-height: 1.8;}
-    .about-copy p { margin-bottom: 24px; }
-    .about-signoff { display: flex; align-items: center; gap: 16px; margin-top: 40px; color: var(--ink); font: 700 14px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-    .about-signoff::before { width: 40px; height: 3px; background: var(--coral); content: ""; }
-    
-    /* Contact Band */
-    .contact-band {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 40px 48px;
-      background: var(--teal);
-      color: #fff;
-      border-radius: 24px;
-      margin-bottom: 60px;
-      box-shadow: var(--shadow-md);
-    }
-    .contact-band p { margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
-    .contact-band a {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 32px;
-      background: #fff;
-      color: var(--teal);
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .contact-band a:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-
-    /* Footer */
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding-block: 40px;
-      color: var(--muted);
+    .link-secondary {
+      color: var(--text-muted);
       font-size: 14px;
-      border-top: 1px solid var(--line);
+      transition: color 0.2s;
     }
-    .footer-brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); font-weight: 800; letter-spacing: .12em; font-size: 14px;}
-    .footer-brand img { width: 32px; height: 32px; border-radius: 6px;}
-    .footer-links { display: flex; flex-wrap: wrap; gap: 32px; }
-    .footer-links a { text-decoration: none; font-weight: 600; transition: color 0.2s;}
-    .footer-links a:hover { color: var(--teal); }
+    .link-secondary:hover { color: var(--text-main); }
 
-    /* Media Queries for Mobile/Tablets */
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; text-align: center; gap: 40px; padding-block: 60px;}
-      .kicker { justify-content: center; }
-      h1 { margin-inline: auto; font-size: clamp(50px, 8vw, 80px); }
-      .hero-copy { margin-inline: auto; }
-      .hero-actions { justify-content: center; }
-      .hero-art { grid-row: 1; min-height: 400px;}
-      
-      .project { grid-template-columns: 1fr; min-height: auto;}
-      .project-copy { padding: 40px; }
+    /* =========================================
+       About Section
+    ========================================= */
+    .about-section {
+      padding: 120px 0;
+      margin-top: 60px;
+      border-top: 1px solid var(--border-color);
     }
-
-    @media (max-width: 800px) {
-      .shell { width: min(100% - 40px, 620px); }
-      .topbar { min-height: 80px; }
-      .menu-toggle { display: grid; place-items: center; }
-      .header-right { gap: 16px; }
-      .header-contact { display: none; }
-      .nav {
-        position: absolute;
-        top: calc(100% + 1px);
-        right: 0;
-        left: 0;
-        display: none;
-        align-items: stretch;
-        gap: 0;
-        padding: 16px 24px 24px;
-        border-bottom: 1px solid var(--line);
-        background: var(--card);
-        box-shadow: var(--shadow-md);
-        border-radius: 0 0 24px 24px;
-      }
-      .nav.is-open { display: flex; flex-direction: column; }
-      .nav a { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 18px;}
-      .nav a:last-child { border-bottom: 0; }
-      
-      .about { grid-template-columns: 1fr; gap: 40px; }
-      .section-top { grid-template-columns: 1fr; gap: 20px; }
-      .contact-band { flex-direction: column; text-align: center; padding: 40px 24px; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 60px;
+    }
+    .about-content p {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+    .signature {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-top: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    @media (max-width: 480px) {
-      .shell { width: min(100% - 32px, 440px); }
-      .brand-name { display: none; } /* Clean up header on small phones */
-      h1 { font-size: 48px; }
-      .hero-tiles { width: 90%; gap: 12px; transform: rotate(0); grid-template-columns: 1fr;}
-      .hero-tile { min-height: 140px; }
-      .hero-tile.game { margin-top: 0; }
-      
-      .project-visual { min-height: 280px; }
-      .app-image { width: 140px; height: 140px; }
-      .project-copy { padding: 30px 24px; }
-      .project h3 { font-size: 26px; }
-      .tags { gap: 8px; }
-      
-      .footer { flex-direction: column; gap: 24px; align-items: flex-start;}
-      .footer-links { flex-direction: column; gap: 16px; }
+    /* =========================================
+       Footer CTA
+    ========================================= */
+    .footer-cta {
+      background: var(--text-main);
+      color: #fff;
+      border-radius: 32px;
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .footer-cta h2 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+    }
+    .btn-light {
+      background: #fff;
+      color: var(--text-main);
+      padding: 16px 32px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+    .btn-light:hover { transform: scale(1.05); }
+
+    /* =========================================
+       Main Footer
+    ========================================= */
+    .main-footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a:hover { color: var(--text-main); }
+
+    /* =========================================
+       Mobile Responsiveness
+    ========================================= */
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-main);}
+
+    @media (max-width: 900px) {
+      .project-card { grid-template-columns: 1fr; }
+      .project-visual { padding: 40px; }
+      .project-info { padding: 40px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-cta { flex-direction: column; text-align: center; gap: 32px; padding: 40px; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .header-glass { border-radius: 16px; }
+      .hero h1 { font-size: 40px; }
+      .app-icon { width: 140px; height: 140px; }
+      .main-footer { flex-direction: column; gap: 24px; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <header class="shell topbar">
-    <a class="brand" href="#home" aria-label="HELALI Studios home">
-      <img src="assets/studio-logo.png" width="512" height="512" alt="Helali Studios Logo">
-      <span class="brand-name">HELALI STUDIOS</span>
-    </a>
-    <div class="header-right">
-      <nav class="nav" id="site-nav" aria-label="Main navigation">
-        <a href="#work">Selected work</a>
-        <a href="#studio">The studio</a>
+
+  <!-- Floating Glass Header -->
+  <div class="header-wrapper">
+    <header class="header-glass">
+      <a href="#home" class="brand">
+        <img src="assets/studio-logo.png" alt="Helali Studios Logo">
+        <span class="brand-name">HELALI STUDIOS</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#work">Selected Work</a>
+        <a href="#about">The Studio</a>
       </nav>
-      <a class="header-contact" href="mailto:ibrahimalhelali91@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-  </header>
+      <a href="mailto:ibrahimalhelali91@gmail.com" class="btn-primary" style="display: none;">Contact</a> <!-- Hidden on very small screens, handled by CSS usually, but let's keep the layout clean -->
+      <a href="mailto:ibrahimalhelali91@gmail.com" class="btn-primary" id="desk-btn">Let's Talk</a>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+    </header>
+  </div>
 
   <main id="home">
-    <section class="shell hero" aria-labelledby="hero-title">
-      <div class="hero-content">
-        <p class="kicker">Independent mobile studio</p>
-        <h1 id="hero-title">Useful things.<br><span class="accent">Joyful</span> <span class="play">play.</span></h1>
-        <p class="hero-copy">HELALI Studios makes mobile apps that make everyday tasks easier, and games that make a little time away more fun.</p>
-        <div class="hero-actions">
-          <a class="button" href="#work">Meet the projects <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>
-      <div class="hero-art" aria-label="A graphic pairing practical tools with playful games">
-        <span class="art-ring" aria-hidden="true"></span>
-        <div class="hero-tiles">
-          <div class="hero-tile tool">
-            <span class="tile-index">01 / TOOL</span>
-            <div><p class="tile-name">Make it<br>useful.</p><p class="tile-caption">Everyday utility</p></div>
-            <svg class="tile-glyph" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M12 8h13l6 6v18H12V8Z" stroke="currentColor" stroke-width="2"/><path d="M25 8v7h6M16 20h11M16 25h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <div class="hero-tile game">
-            <span class="tile-index">02 / GAME</span>
-            <div><p class="tile-name">Make it<br>playful.</p><p class="tile-caption">A moment well spent</p></div>
-            <svg class="tile-glyph" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="7" y="7" width="12" height="12" rx="3" stroke="currentColor" stroke-width="2"/><rect x="21" y="7" width="12" height="12" rx="3" stroke="currentColor" stroke-width="2"/><rect x="14" y="21" width="12" height="12" rx="3" stroke="currentColor" stroke-width="2"/></svg>
-          </div>
-        </div>
-        <span class="art-note">BUILT FOR THE EVERYDAY</span>
-      </div>
+    
+    <!-- Hero Section -->
+    <section class="container hero">
+      <span class="kicker">Independent Mobile Studio</span>
+      <h1>Useful things.<br><span class="accent">Joyful</span> <span class="highlight">play.</span></h1>
+      <p class="subtitle">HELALI Studios makes mobile apps that make everyday tasks easier, and games that make a little time away more fun.</p>
+      <a href="#work" class="btn-primary" style="padding: 16px 32px; font-size: 16px;">
+        Meet the projects <span>↓</span>
+      </a>
     </section>
 
-    <div class="shell studio-line" aria-label="Studio principles">
-      <strong>Small studio</strong><span class="rule"></span><span>Useful by nature</span><span class="rule"></span><span>Playful by design</span>
-    </div>
-
-    <section class="shell work" id="work" aria-labelledby="work-title">
-      <div class="section-top">
-        <div><p class="section-index">01 — IN THE WORKSHOP</p><h2 id="work-title">Two sides of<br>the same curiosity.</h2></div>
-        <p>Tools for getting things done. Games for enjoying the in-between.</p>
+    <!-- Work Section -->
+    <section id="work" class="container" style="padding-top: 60px;">
+      <div class="section-header">
+        <h2>In the workshop.</h2>
+        <p>Two sides of the same curiosity.</p>
       </div>
-      <div class="project-list">
+
+      <div class="work-grid">
         
-        <!-- Project 1 -->
-        <article class="project">
-          <div class="project-visual json">
-            <img class="app-image" src="assets/json-converter.png" width="512" height="512" alt="JSON Converter: All in One app icon placeholder">
-            <span class="visual-tag">A practical tool</span>
+        <!-- Project 1: Tool -->
+        <article class="project-card">
+          <div class="project-visual">
+            <img src="assets/json-converter.png" alt="JSON Converter App" class="app-icon" style="background:#111827; border: 4px solid #111827;">
           </div>
-          <div class="project-copy">
-            <div class="project-meta"><span class="status-dot"></span> Available on Google Play</div>
+          <div class="project-info">
+            <div class="status-badge">
+              <span class="status-dot"></span> Available on Google Play
+            </div>
             <h3>JSON Converter <span>— All in One</span></h3>
             <p>Work with JSON right on your device. Convert, filter, and batch-process data, then export it in a format that fits your workflow.</p>
-            <div class="tags" aria-label="Product capabilities">
-              <span class="tag">Local conversion</span><span class="tag">Filtering</span><span class="tag">Batch</span><span class="tag">CSV · Excel · HTML</span>
+            <div class="tags">
+              <span class="tag">Local conversion</span>
+              <span class="tag">Filtering</span>
+              <span class="tag">Batch</span>
+              <span class="tag">Export</span>
             </div>
-            <div class="project-actions">
-              <a class="project-link" href="https://play.google.com/store/apps/details?id=com.ibrahimalhelali91.JSON_Converter" target="_blank" rel="noopener noreferrer">
-                Explore the app <span aria-hidden="true">→</span>
+            <div class="project-links">
+              <a href="https://play.google.com/store/apps/details?id=com.ibrahimalhelali91.JSON_Converter" target="_blank" rel="noopener" class="link-primary">
+                Explore App →
               </a>
-              <span class="link-separator" aria-hidden="true">•</span>
-              <a class="project-link" href="json-converter/privacy-policy.html" target="_blank" rel="noopener noreferrer">
-                Privacy Policy <span aria-hidden="true">↗</span>
+              <a href="json-converter/privacy-policy.html" target="_blank" rel="noopener" class="link-secondary">
+                Privacy Policy ↗
               </a>
             </div>
           </div>
         </article>
 
-        <!-- Project 2 -->
-        <article class="project game">
-          <div class="project-visual game">
-            <img class="app-image" src="assets/drop-2048.png" width="512" height="512" alt="Drop 2048 game icon placeholder">
-            <span class="visual-tag">In progress</span>
-          </div>
-          <div class="project-copy">
-            <div class="project-meta"><span class="status-dot pending"></span> In development · Closed testing</div>
+        <!-- Project 2: Game -->
+        <article class="project-card game">
+          <div class="project-info">
+            <div class="status-badge pending">
+              <span class="status-dot"></span> In Development
+            </div>
             <h3>Drop 2048</h3>
-            <p>A merge puzzle game in development. It is currently in closed testing and is not publicly available.</p>
-            <span class="development-note">More when it’s ready.</span>
+            <p>A merge puzzle game designed for a satisfying moment of rest. Currently in closed testing, refining the mechanics before public release.</p>
+            <div class="tags">
+              <span class="tag">Puzzle</span>
+              <span class="tag">Casual</span>
+              <span class="tag">Coming Soon</span>
+            </div>
+            <div class="project-links">
+              <span style="color: var(--accent); font-weight: 500; font-size: 15px;">More details when it's ready.</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <img src="assets/drop-2048.png" alt="Drop 2048 Game" class="app-icon">
           </div>
         </article>
 
       </div>
     </section>
 
-    <section class="shell about" id="studio" aria-labelledby="studio-title">
-      <div><p class="section-index">02 — ABOUT HELALI STUDIOS</p><h2 class="about-title" id="studio-title">Made with care.<br>Made to be used.</h2></div>
-      <div class="about-copy">
-        <p>HELALI Studios is an independent maker of mobile apps and games. The work moves between practical tools and playful experiences, with the same simple aim: make something people genuinely enjoy having on their phone.</p>
-        <p>One project helps you get something done. Another gives you a satisfying reason to take a break. Both start with a real person and a small idea worth making.</p>
-        <div class="about-signoff">Independent by design</div>
+    <!-- About Section -->
+    <section id="about" class="container about-section">
+      <div class="about-grid">
+        <div>
+          <h2 style="font-family: var(--font-heading); font-size: 40px; font-weight: 700; line-height: 1.1;">Made with care.<br>Made to be used.</h2>
+        </div>
+        <div class="about-content">
+          <p>HELALI Studios is an independent maker of mobile apps and games. The work moves between practical tools and playful experiences, with the same simple aim: make something people genuinely enjoy having on their phone.</p>
+          <p>One project helps you get something done. Another gives you a satisfying reason to take a break. Both start with a real person and a small idea worth making.</p>
+          <div class="signature">Independent by design</div>
+        </div>
       </div>
     </section>
 
-    <section class="shell contact-band" aria-label="Contact HELALI Studios">
-      <p>Have a question or an idea to share?</p>
-      <a href="mailto:ibrahimalhelali91@gmail.com">ibrahimalhelali91@gmail.com <span aria-hidden="true">↗</span></a>
-    </section>
+    <!-- Call To Action -->
+    <div class="container">
+      <div class="footer-cta">
+        <h2>Have a question or an idea?</h2>
+        <a href="mailto:ibrahimalhelali91@gmail.com" class="btn-light">ibrahimalhelali91@gmail.com ↗</a>
+      </div>
+    </div>
+
   </main>
 
-  <footer class="shell footer">
-    <span class="footer-brand"><img src="assets/studio-logo.png" width="512" height="512" alt=""> HELALI STUDIOS</span>
-    <nav class="footer-links" aria-label="Studio links">
-      <a href="https://play.google.com/store/apps/developer?id=HELALI+Studios" target="_blank" rel="noopener noreferrer">Google Play</a>
-      <a href="mailto:ibrahimalhelali91@gmail.com">Contact</a>
-    </nav>
-    <span>© HELALI Studios</span>
+  <!-- Footer -->
+  <footer class="container main-footer">
+    <div class="brand" style="gap: 8px;">
+      <img src="assets/studio-logo.png" alt="" style="width: 24px; height: 24px; border-radius: 6px;">
+      <span class="brand-name" style="font-size: 13px;">HELALI STUDIOS © 2026</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://play.google.com/store/apps/developer?id=HELALI+Studios" target="_blank" rel="noopener">Google Play Developer Page</a>
+    </div>
   </footer>
-  
+
+  <style>
+      @media(max-width: 768px) { #desk-btn { display: none; } }
+  </style>
   <script>
-    const menuButton = document.querySelector(".menu-toggle");
-    const siteNav = document.querySelector("#site-nav");
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-      menuButton.setAttribute("aria-expanded", String(!isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
-      siteNav.classList.toggle("is-open", !isOpen);
-    });
-    siteNav.addEventListener("click", (event) => {
-      if (event.target.closest("a")) {
-        siteNav.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open navigation");
-      }
+    // Simple script to handle mobile menu button interaction if needed
+    const btn = document.querySelector('.mobile-menu-btn');
+    btn.addEventListener('click', () => {
+        alert("يمكنك هنا إضافة قائمة منسدلة للموبايل بسهولة عبر الـ CSS");
     });
   </script>
 </body>
