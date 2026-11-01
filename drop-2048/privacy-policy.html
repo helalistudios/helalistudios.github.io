@@ -196,16 +196,21 @@
     /* =========================================
        Sidebar / Table of Contents
     ========================================= */
-    .contents {
+    /* استهداف الـ aside لجعله يثبت عند التمرير */
+    aside {
       position: sticky;
-      top: 100px;
-      align-self: start; /* ضروري لكي يثبت الفهرس عند التمرير */
+      top: 120px;
+      align-self: start; /* ضروري جداً لعمل الـ sticky داخل الـ grid */
+    }
+
+    .contents {
       padding-left: 24px;
       border-left: 2px solid var(--border-color);
-      max-height: calc(100vh - 120px); /* يمنعه من الاختفاء أسفل الشاشة */
-      overflow-y: auto; /* يضيف سكرول داخلي للفهرس إذا كان طويلاً جداً */
+      max-height: calc(100vh - 140px); /* يمنعه من الاختفاء أسفل الشاشة */
+      overflow-y: auto; /* يضيف سكرول داخلي للفهرس إذا كان طويلاً */
     }
-    /* إخفاء شريط التمرير الجانبي للفهرس لجمالية التصميم */
+    
+    /* تجميل شريط التمرير الخاص بالفهرس */
     .contents::-webkit-scrollbar { width: 4px; }
     .contents::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
     .contents-label {
@@ -250,30 +255,41 @@
        Mobile Responsiveness
     ========================================= */
     @media (max-width: 900px) {
-      /* تحويل الشبكة إلى Flex لكي نتمكن من رفع الفهرس للأعلى */
-      .page-grid { display: flex; flex-direction: column; }
-      .contents { 
-        position: static; 
-        order: -1; /* هذا السطر السحري يرفع الفهرس فوق النص بالكامل */
+      .page-grid { 
+        display: flex; 
+        flex-direction: column; 
+      }
+      
+      /* السطر السحري لرفع الفهرس يطبق على aside */
+      aside { 
+        order: -1; 
         width: 100%; 
+        position: static; /* إلغاء التثبيت في الموبايل ليتحرك بشكل طبيعي */
+      }
+      
+      .contents { 
         border-left: none; 
         border-top: 2px solid var(--border-color); 
         padding-top: 24px; 
         padding-left: 0; 
         margin-bottom: 24px; 
+        max-height: none; /* إلغاء السكرول الداخلي في الموبايل */
       }
     }
     @media (max-width: 768px) {
       .header-glass { padding: 10px 16px; }
       
-      /* تصغير حجم اللوجو واسم الاستوديو بدلاً من حذفه ليتسع في شاشة الهاتف */
-      .brand img { width: 34px; height: 34px; border-radius: 8px;}
+      /* تصغير حجم اللوجو واسم الاستوديو بدلاً من إخفائه ليتسع في الهاتف */
+      .brand img { width: 34px; height: 34px; border-radius: 8px; }
       .brand-name { display: block !important; font-size: 13px; letter-spacing: 0.02em; }
       
       #desk-btn { display: none; }
+      
+      /* تقليل المسافات الجانبية لتوفير مساحة للقراءة */
       .shell { padding-top: 110px; padding-inline: 16px; }
       .document { padding: 32px 20px; border-radius: 24px; }
       .document-content h1 { font-size: 28px; }
+      
       .main-footer { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
