@@ -4,339 +4,293 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Privacy Policy for JSON Converter. Published by HELALI Studios.">
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Privacy Policy for JSON Converter — HELALI Studios">
   <meta property="og:description" content="Privacy Policy for JSON Converter. Published by HELALI Studios.">
   <meta property="og:url" content="https://helalistudios.github.io/json-converter/privacy.html">
-  <meta name="theme-color" content="#f3f4ee">
-  <link rel="icon" type="image/png" href="../assets/studio-logo-white.png">
   <link rel="canonical" href="https://helalistudios.github.io/json-converter/privacy.html">
+  
+  <!-- Icon path adjusted for subfolder -->
+  <link rel="icon" type="image/png" href="../assets/studio-logo-white.png">
+  
   <title>Privacy Policy for JSON Converter — HELALI Studios</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
+    /* =========================================
+       Light Theme Variables (Default)
+    ========================================= */
     :root {
-      color-scheme: light;
-      --paper: #f3f4ee;
-      --surface: #fbfcf7;
-      --ink: #182b35;
-      --muted: #57696b;
-      --line: #cbd5d1;
-      --teal: #165c5a;
-      --teal-deep: #103f43;
-      --acid: #d7f36a;
-      --coral: #f2795d;
-      --blue: #a9c9e3;
-      --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --bg-color: #f8fafc;
+      --surface-color: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+      --primary: #0f766e;
+      --primary-hover: #115e59;
+      
+      --glass-bg: rgba(255, 255, 255, 0.75);
+      --glass-border: rgba(226, 232, 240, 0.8);
+      
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+
+    /* =========================================
+       Dark Theme Variables
+    ========================================= */
+    [data-theme="dark"] {
+      --bg-color: #0b1120;
+      --surface-color: #151e2e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #2a374a;
+      --primary: #14b8a6;
+      --primary-hover: #0d9488;
+      
+      --glass-bg: rgba(11, 17, 32, 0.75);
+      --glass-border: rgba(42, 55, 74, 0.8);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 140px; }
+    
     body {
-      min-width: 320px;
-      min-height: 100dvh;
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.65;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
-    a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    a:hover { color: var(--teal-deep); }
-    a:focus-visible {
-      outline: 3px solid var(--coral);
-      outline-offset: 4px;
-      border-radius: 2px;
+
+    /* =========================================
+       Floating Glass Header
+    ========================================= */
+    .header-wrapper {
+      position: fixed;
+      top: 24px;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 24px;
     }
-    .skip-link {
-      position: absolute;
-      z-index: 20;
-      top: 12px;
-      left: 12px;
-      padding: 10px 14px;
-      transform: translateY(-160%);
-      background: var(--ink);
-      color: var(--surface);
-      font-weight: 700;
-    }
-    .skip-link:focus { transform: translateY(0); }
-    .shell { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
-    .masthead {
-      min-height: 82px;
+    .header-glass {
+      width: 100%;
+      max-width: 1092px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--line);
+      padding: 12px 24px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 99px;
+      box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.05);
+      transition: background 0.4s ease, border-color 0.4s ease;
     }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--ink);
-      text-decoration: none;
+
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--text-main);}
+    .brand img { width: 44px; height: 44px; border-radius: 12px; object-fit: contain; }
+    .brand-name { font-family: var(--font-heading); font-weight: 700; font-size: 17px; letter-spacing: 0.05em; }
+
+    /* Theme Toggle Logic */
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .theme-toggle {
+      background: transparent; border: none; color: var(--text-muted);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%; transition: all 0.2s ease;
     }
-    .brand-mark {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      display: block;
-      border: 1px solid var(--ink);
-      background: var(--acid);
-      transform: rotate(-7deg);
+    .theme-toggle:hover { background: var(--surface-color); color: var(--text-main); }
+    .theme-toggle svg { width: 22px; height: 22px; fill: currentColor; }
+    .icon-sun { display: none; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+    
+    .logo-dark { display: none; }
+    [data-theme="dark"] .logo-light { display: none; }
+    [data-theme="dark"] .logo-dark { display: block; }
+
+    .btn-primary {
+      background: var(--primary); color: #ffffff !important; padding: 10px 24px;
+      border-radius: 99px; font-weight: 600; font-size: 14px; text-decoration: none;
+      transition: all 0.3s ease;
     }
-    .brand-mark::before,
-    .brand-mark::after {
-      position: absolute;
-      display: block;
-      content: "";
-    }
-    .brand-mark::before {
-      inset: 6px;
-      border: 1px solid var(--teal);
-      border-radius: 50%;
-    }
-    .brand-mark::after {
-      right: -5px;
-      bottom: -4px;
-      width: 9px;
-      height: 9px;
-      border: 1px solid var(--ink);
-      background: var(--coral);
-    }
-    .brand-name { font-size: 12px; font-weight: 850; letter-spacing: .17em; }
-    .header-note {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--muted);
-      font: 700 10px/1.4 var(--mono);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    .header-note::before { width: 19px; height: 2px; background: var(--coral); content: ""; }
-    main { padding-block: 54px 86px; }
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+    /* =========================================
+       Page Layout
+    ========================================= */
+    .shell { width: 100%; max-width: 1200px; margin: 0 auto; padding: 140px 24px 80px; }
+    
     .page-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 242px;
+      grid-template-columns: 1fr 280px;
+      gap: 60px;
       align-items: start;
-      gap: clamp(42px, 7vw, 100px);
     }
+
     .document {
-      min-width: 0;
-      padding: clamp(30px, 5.2vw, 68px) clamp(24px, 6vw, 76px);
-      border: 1px solid var(--line);
-      background: var(--surface);
-      box-shadow: 0 18px 50px rgb(24 43 53 / 5%);
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 32px;
+      padding: 60px;
+      box-shadow: var(--shadow-sm);
+      transition: background 0.4s ease, border-color 0.4s ease;
     }
-    .document-content {
-      max-width: 710px;
-      overflow-wrap: anywhere;
-      word-break: normal;
-    }
-    .document-content > :first-child { margin-top: 0; }
-    .document-content h1,
-    .document-content h2,
-    .document-content h3,
-    .document-content h4 {
-      color: var(--ink);
-      font-weight: 760;
-      line-height: 1.2;
-      letter-spacing: -.045em;
-      text-wrap: pretty;
-    }
+
+    /* =========================================
+       Typography Formatting (Matches Premium Style)
+    ========================================= */
+    .document-content { overflow-wrap: anywhere; word-break: normal; }
+    
     .document-content h1 {
-      margin: 0 0 1.1em;
-      padding-bottom: .55em;
-      border-bottom: 1px solid var(--line);
-      font-size: clamp(34px, 5vw, 54px);
-      letter-spacing: -.065em;
-      line-height: 1.02;
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
     }
+    
     .document-content h2 {
-      margin: 2.25em 0 .7em;
-      padding-top: .55em;
-      border-top: 1px solid #dce3de;
-      font-size: clamp(23px, 3vw, 29px);
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 3vw, 28px);
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
     }
-    .document-content h3 { margin: 1.8em 0 .55em; font-size: 20px; }
-    .document-content h4 { margin: 1.5em 0 .45em; font-size: 17px; }
-    .document-content p { margin: 0 0 1.15em; color: #35494d; }
-    .document-content strong { color: var(--ink); font-weight: 750; }
-    .document-content ul,
-    .document-content ol {
-      margin: .25em 0 1.35em;
-      padding-left: 1.45em;
-      color: #35494d;
+    
+    .document-content h3 { font-family: var(--font-heading); font-size: 20px; margin: 32px 0 16px; color: var(--text-main); }
+    
+    .document-content p { color: var(--text-muted); margin-bottom: 20px; }
+    
+    .document-content strong { color: var(--text-main); font-weight: 600; }
+    
+    .document-content ul, .document-content ol { margin: 0 0 24px; padding-left: 24px; color: var(--text-muted); }
+    .document-content li { margin-bottom: 8px; }
+    .document-content li::marker { color: var(--primary); }
+    
+    .document-content a {
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 4px;
+      font-weight: 500;
+      transition: all 0.2s ease;
     }
-    .document-content li { margin: .42em 0; padding-left: .2em; }
-    .document-content li::marker { color: var(--teal); }
-    .document-content blockquote {
-      margin: 1.6em 0;
-      padding: .15em 0 .15em 1.2em;
-      border-left: 3px solid var(--acid);
-      color: var(--muted);
-    }
-    .document-content blockquote > :last-child { margin-bottom: 0; }
-    .document-content hr { margin: 2.4em 0; border: 0; border-top: 1px solid var(--line); }
-    .document-content table {
-      width: 100%;
-      margin: 1.5em 0;
-      border-collapse: collapse;
-      font-size: .94em;
-    }
-    .document-content th,
-    .document-content td {
-      padding: 11px 13px;
-      border: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-    }
-    .document-content th { background: #edf2eb; color: var(--ink); font-weight: 750; }
-    .document-content tr:nth-child(even) td { background: #f7f8f2; }
-    .document-content code,
-    .document-content pre {
-      font-family: var(--mono);
-      font-size: .88em;
-    }
-    .document-content code {
-      padding: .12em .34em;
-      border: 1px solid #d9e1dc;
-      background: #f0f3ed;
-      color: var(--teal-deep);
-      overflow-wrap: anywhere;
-    }
-    .document-content pre {
-      max-width: 100%;
-      overflow-x: auto;
-      padding: 16px 18px;
-      border: 1px solid var(--line);
-      background: #edf2eb;
-      color: var(--ink);
-      line-height: 1.55;
-      white-space: pre;
-    }
-    .document-content pre code { padding: 0; border: 0; background: transparent; }
+    .document-content a:hover { text-decoration-color: var(--primary); }
+
+    /* =========================================
+       Sidebar / Table of Contents
+    ========================================= */
     .contents {
       position: sticky;
-      top: 28px;
-      padding: 22px 0 0 21px;
-      border-left: 2px solid var(--acid);
+      top: 140px;
+      padding-left: 24px;
+      border-left: 2px solid var(--border-color);
     }
-    .contents:empty { display: none; }
     .contents-label {
-      margin: 0 0 14px;
-      color: var(--teal);
-      font: 700 10px/1.4 var(--mono);
-      letter-spacing: .13em;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
       text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
     }
-    .contents ul {
-      display: grid;
-      gap: 9px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .contents li { margin: 0; }
+    .contents ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
     .contents a {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
+      color: var(--text-muted);
+      font-size: 14px;
       text-decoration: none;
-      text-decoration-color: var(--line);
-      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+      line-height: 1.4;
+      display: block;
     }
-    .contents a:hover { color: var(--teal); text-decoration: underline; }
-    .source-note {
+    .contents a:hover { color: var(--primary); font-weight: 500; }
+
+    /* =========================================
+       Footer
+    ========================================= */
+    .main-footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      gap: 18px;
-      margin-top: 28px;
-      padding-top: 17px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-inline: 24px;
     }
-    .source-note span { flex: 0 0 auto; }
-    .source-note a { min-width: 0; overflow-wrap: anywhere; }
-    .site-footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding-block: 22px 30px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 11px;
+    .footer-brand { display: flex; align-items: center; gap: 12px; color: var(--text-main); font-family: var(--font-heading); font-weight: 700;}
+    .footer-brand img { width: 32px; height: 32px; border-radius: 8px; }
+
+    /* =========================================
+       Mobile Responsiveness
+    ========================================= */
+    @media (max-width: 900px) {
+      .page-grid { grid-template-columns: 1fr; }
+      .contents { position: static; border-left: none; border-top: 2px solid var(--border-color); padding-top: 24px; padding-left: 0; margin-bottom: 40px; order: -1; }
     }
-    .footer-brand { color: var(--ink); font-weight: 800; letter-spacing: .12em; }
-    @media (max-width: 820px) {
-      .shell { width: min(100% - 40px, 700px); }
-      main { padding-block: 35px 60px; }
-      .page-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-      .contents { position: static; order: -1; padding: 17px 20px; border: 1px solid var(--line); border-left: 3px solid var(--acid); background: var(--surface); }
-      .contents ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; }
-      .document { padding: clamp(26px, 6vw, 54px); }
-    }
-    @media (max-width: 520px) {
-      .shell { width: calc(100% - 32px); }
-      .masthead { min-height: 70px; }
-      .brand { gap: 10px; }
-      .brand-mark { width: 27px; height: 27px; }
-      .brand-name { font-size: 11px; }
-      .header-note { gap: 7px; font-size: 8px; letter-spacing: .07em; }
-      .header-note::before { width: 13px; }
-      main { padding-block: 23px 42px; }
-      .document { padding: 26px 21px 24px; }
-      .document-content { font-size: 15px; line-height: 1.68; }
-      .document-content table { display: block; overflow-x: auto; }
-      .contents ul { grid-template-columns: 1fr; gap: 8px; }
-      .source-note { align-items: flex-start; flex-direction: column; gap: 5px; }
-      .site-footer { align-items: flex-start; flex-direction: column; gap: 8px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; }
-    }
-    @media print {
-      :root { color-scheme: light; }
-      body { min-height: auto; background: #fff; color: #182b35; font-size: 11pt; }
-      .shell { width: 100%; }
-      .masthead { min-height: 0; padding: 0 0 12pt; }
-      main { padding: 20pt 0; }
-      .page-grid { display: block; }
-      .contents { display: none; }
-      .document { padding: 0; border: 0; box-shadow: none; }
-      .document-content { max-width: none; }
-      .source-note { margin-top: 20pt; }
-      .site-footer { padding: 12pt 0 0; }
-      a { color: inherit; }
-      .document-content h2, .document-content h3 { break-after: avoid; }
-      .document-content table, .document-content blockquote, .document-content pre { break-inside: avoid; }
+    @media (max-width: 768px) {
+      .header-glass { padding: 10px 20px; }
+      .brand-name { display: none; }
+      #desk-btn { display: none; }
+      .shell { padding-top: 120px; }
+      .document { padding: 32px 24px; border-radius: 20px; }
+      .document-content h1 { font-size: 32px; }
+      .main-footer { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to policy</a>
-  <header class="shell masthead">
-    <a class="brand" href="https://helalistudios.github.io/" aria-label="HELALI Studios home">
-      <img
-  src="../assets/studio-logo.png"
-  alt=""
-  width="48"
-  height="48"
-  style="display: block; object-fit: contain;"
->
-      <span class="brand-name">HELALI STUDIOS</span>
-    </a>
-    <span class="header-note">Independent mobile studio</span>
-  </header>
+
+  <!-- Floating Glass Header -->
+  <div class="header-wrapper">
+    <header class="header-glass">
+      <!-- Paths adjusted to ../assets/ for subfolder -->
+      <a href="https://helalistudios.github.io/" class="brand">
+        <img src="../assets/studio-logo.png" alt="Helali Studios Logo" class="logo-light">
+        <img src="../assets/studio-logo-white.png" alt="Helali Studios Logo" class="logo-dark">
+        <span class="brand-name">HELALI STUDIOS</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <a href="https://helalistudios.github.io/" class="btn-primary" id="desk-btn">Back to Home</a>
+      </div>
+    </header>
+  </div>
 
   <main class="shell" id="main-content">
     <div class="page-grid">
+      
+      <!-- Content Document -->
       <article class="document" aria-label="Privacy policy">
         <div class="document-content">
-          <!-- POLICY_CONTENT_START -->
+          <!-- POLICY_CONTENT_START (UNTOUCHED) -->
 <h1 id="privacy-policy-for-json-converter">Privacy Policy for JSON Converter</h1>
 <p><strong>Last updated: September 1, 2026</strong></p>
 <p>JSON Converter (&quot;the App&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is a general-purpose application for converting and formatting JSON files into readable text and other supported formats.</p>
@@ -460,33 +414,70 @@
 <h2 id="13-contact-us">13. Contact Us</h2>
 <p>If you have any questions, concerns, or suggestions about this Privacy Policy or the privacy practices of JSON Converter, please contact us at:</p>
 <p><strong>Email:</strong> <a href="mailto:ibrahimalhelali91@gmail.com">ibrahimalhelali91@gmail.com</a></p>
-<!-- POLICY_CONTENT_END -->
+          <!-- POLICY_CONTENT_END -->
         </div>
       </article>
-      <nav class="contents" aria-label="On this page">
-        <p class="contents-label">On this page</p>
-        <ul>
-          <li><a href="#1-information-we-process">1. Information We Process</a></li>
-<li><a href="#2-importing-json-from-a-url">2. Importing JSON from a URL</a></li>
-<li><a href="#3-app-permissions">3. App Permissions</a></li>
-<li><a href="#4-advertising-services">4. Advertising Services</a></li>
-<li><a href="#5-firebase-crashlytics">5. Firebase Crashlytics</a></li>
-<li><a href="#6-in-app-purchases">6. In-App Purchases</a></li>
-<li><a href="#7-donations-and-external-links">7. Donations and External Links</a></li>
-<li><a href="#8-data-retention">8. Data Retention</a></li>
-<li><a href="#9-childrens-privacy">9. Children&#39;s Privacy</a></li>
-<li><a href="#10-security">10. Security</a></li>
-<li><a href="#11-your-privacy-choices">11. Your Privacy Choices</a></li>
-<li><a href="#12-changes-to-this-privacy-policy">12. Changes to This Privacy Policy</a></li>
-<li><a href="#13-contact-us">13. Contact Us</a></li>
-        </ul>
-      </nav>
+
+      <!-- Sidebar (Table of Contents) (UNTOUCHED) -->
+      <aside>
+        <nav class="contents" aria-label="On this page">
+          <p class="contents-label">On this page</p>
+          <ul>
+            <li><a href="#1-information-we-process">1. Information We Process</a></li>
+            <li><a href="#2-importing-json-from-a-url">2. Importing JSON from a URL</a></li>
+            <li><a href="#3-app-permissions">3. App Permissions</a></li>
+            <li><a href="#4-advertising-services">4. Advertising Services</a></li>
+            <li><a href="#5-firebase-crashlytics">5. Firebase Crashlytics</a></li>
+            <li><a href="#6-in-app-purchases">6. In-App Purchases</a></li>
+            <li><a href="#7-donations-and-external-links">7. Donations and External Links</a></li>
+            <li><a href="#8-data-retention">8. Data Retention</a></li>
+            <li><a href="#9-childrens-privacy">9. Children&#39;s Privacy</a></li>
+            <li><a href="#10-security">10. Security</a></li>
+            <li><a href="#11-your-privacy-choices">11. Your Privacy Choices</a></li>
+            <li><a href="#12-changes-to-this-privacy-policy">12. Changes to This Privacy Policy</a></li>
+            <li><a href="#13-contact-us">13. Contact Us</a></li>
+          </ul>
+        </nav>
+      </aside>
+      
     </div>
   </main>
 
-  <footer class="shell site-footer">
-    <span class="footer-brand">HELALI STUDIOS</span>
+  <footer class="main-footer">
+    <div class="footer-brand">
+      <!-- Paths adjusted to ../assets/ for subfolder -->
+      <img src="../assets/studio-logo.png" alt="Helali Studios" class="logo-light">
+      <img src="../assets/studio-logo-white.png" alt="Helali Studios" class="logo-dark">
+      <span>HELALI STUDIOS</span>
+    </div>
     <span>Useful things. Joyful play.</span>
   </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const metaThemeColor = document.getElementById('theme-color-meta');
+    
+    const currentTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (currentTheme === 'dark' || (!currentTheme && systemPrefersDark)) {
+        body.setAttribute('data-theme', 'dark');
+        metaThemeColor.setAttribute('content', '#0b1120');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            metaThemeColor.setAttribute('content', '#ffffff');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            metaThemeColor.setAttribute('content', '#0b1120');
+        }
+    });
+  </script>
 </body>
 </html>
